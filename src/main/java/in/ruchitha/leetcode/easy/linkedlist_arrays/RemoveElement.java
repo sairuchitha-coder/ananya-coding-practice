@@ -11,7 +11,7 @@ public class RemoveElement {
         System.out.println("The length of the array "+a);
         System.out.println("The array is displayed as");
         System.out.print("[ ");
-        for(int i=0;i<nums.length;i++)
+        for(int i=0;i<a;i++)
         {
             System.out.print(nums[i]+" ");
         }
@@ -21,7 +21,7 @@ public class RemoveElement {
     {
         int finalArrayLength=0;
         int matchingElement=0;
-        for(int i=0;i<nums.length;i++)
+        for(int i=0;i<nums.length-matchingElement;i++)
         {
             if(nums[i]!=var)
             {
