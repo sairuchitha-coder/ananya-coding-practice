@@ -1,12 +1,10 @@
 package in.ruchitha.leetcode.easy.linkedlist_arrays.simple_interpreter_part_two;
-
-import  in.ruchitha.leetcode.easy.linkedlist_arrays.simple_interpreter_part_two.Service.Expr;
+import in.ruchitha.leetcode.easy.linkedlist_arrays.simple_interpreter_part_two.Service.Expr;
 import java.util.Scanner;
 
-public class CalculatorInterpreter {
+public class CalculatorInterpreter1 {
     public static void main(String[] args) {
         System.out.println("This is a simple calculator - Playing around with an interpreter");
-        System.out.println("NOTE - If you want to get a single digit addition please add 0 before the digit");
 
         Expr expr = new Expr();
         Scanner scanner = new Scanner(System.in);
@@ -14,7 +12,7 @@ public class CalculatorInterpreter {
         while (true) {
             System.out.print("\n\nEnter -1 to escape : $>");
             String input = scanner.nextLine();
-            input = input.replaceAll(" ","");
+            input=input.replaceAll(" ","");
 
             if (input.equalsIgnoreCase("-1")) {
                 break;
@@ -25,4 +23,3 @@ public class CalculatorInterpreter {
         }
     }
 }
-
