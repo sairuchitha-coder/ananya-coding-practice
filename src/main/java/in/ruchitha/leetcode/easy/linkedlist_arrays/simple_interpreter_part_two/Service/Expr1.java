@@ -29,6 +29,8 @@ public class Expr1 {
         Set<TokenType> operators = new HashSet<>();
         operators.add(TokenType.PLUS);
         operators.add(TokenType.MINUS);
+        operators.add(TokenType.MULTIPLICATION);
+        operators.add(TokenType.DIVISION);
         this.structure.put(1,operators);
 
         Set<TokenType> intTwo = new HashSet<>();
@@ -48,6 +50,14 @@ public class Expr1 {
     }
 
     public int evaluate(String input) {
+        if(input==null)
+        {
+            throw new IllegalArgumentException("Null value not allowed");
+        }
+
+        if(input.length()==0) {
+            throw new IllegalArgumentException("Empty String not allowed");
+        }
         Token[] tokens = new Token[3];
         /*
         structure of the language ->
@@ -56,18 +66,12 @@ public class Expr1 {
         LexicalAnalyzerV2 analyzer = new LexicalAnalyzerV2(input);
         for (int i=0;i<3;i++){
             tokens[i]=analyzer.getNextToken();
-
-       // in.ruchitha.leetcode.easy.linkedlist_arrays.simple_interpreter.Service.LexicalAnalyzer analyzer = new LexicalAnalyzer(input);
-
-        //for (int i = 0; i < 5; i++) {
-           // tokens[i] = analyzer.getNextToken(); // tokens[0] -> left // tokens[1] -> middle //tokens[2] -> right
-
             if (!validate(tokens[i], this.structure.get(i))) { //this.structure.get(0) -> o/p -> TokenType.INTEGER
-                throw new IllegalArgumentException("The input is invalid : Valid is : <int>+<int> where <int> should be single digit");
+                throw new IllegalArgumentException("The input is invalid : Valid is : <int>operator<int> where <int> cab be any digit " +
+                        "and allowed operators are [+,-,*,/]");
             }
         }
-        //Integer.parseInt("10") -> int 10
-        // return (Integer.parseInt(tokens[0].getValue())*10+Integer.parseInt(tokens[1].getValue()) + Integer.parseInt(tokens[3].getValue())*10+Integer.parseInt(tokens[4].getValue()));
+
         switch(tokens[1].getType()){
             case PLUS:
                 return (Integer.parseInt(tokens[0].getValue())+Integer.parseInt(tokens[2].getValue()));
@@ -76,6 +80,9 @@ public class Expr1 {
             case MULTIPLICATION:
                 return (Integer.parseInt(tokens[0].getValue())*Integer.parseInt(tokens[2].getValue()));
             case DIVISION:
+                if (tokens[2].getValue().equals("0")) {
+                    throw new IllegalArgumentException("The input is invalid : Valid is : <int>/<int> where second <int> should be greater than 0");
+                }
                 return (Integer.parseInt(tokens[0].getValue())/Integer.parseInt(tokens[2].getValue()));
 
         }
