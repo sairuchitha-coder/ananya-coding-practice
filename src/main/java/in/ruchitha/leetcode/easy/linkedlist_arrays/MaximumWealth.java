@@ -17,7 +17,7 @@ public class MaximumWealth {
     }
         public int maximumWealth(int[][] accounts) {
 
-            int msum = 0; 
+            int msum = 0;
 
             for (int i = 0; i < accounts.length; i++) {
                 int sum = 0;
