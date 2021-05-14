@@ -17,11 +17,11 @@ public class MaximumWealth {
     }
         public int maximumWealth(int[][] accounts) {
 
-            int msum = 0; //maxsum or max_wealth
+            int msum = 0; 
 
-            for (int i = 0; i < accounts.length; i++) {  //iterating through the rows
+            for (int i = 0; i < accounts.length; i++) {
                 int sum = 0;
-                for (int j = 0; j < accounts[0].length; j++) {   //iterating through the columns
+                for (int j = 0; j < accounts[0].length; j++) {
                     sum += accounts[i][j];
                 }
                 msum = Math.max(msum, sum);
